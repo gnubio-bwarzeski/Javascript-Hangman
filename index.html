@@ -2,24 +2,47 @@
 <html lang="en">
 <head>
   <title>Hangman</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/mdb.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 <body>
-
-
-
-
-<p id="animeanswer"></p>
-<p id="lives"></p>
-
-
-<p>List of Guesses: <div id="guesses"></div></p>
-
+  <div class="container">
+    <div class= "row">
+      <div class="col-md-6 col-md-offset-3 title">
+      <img src="assets/images/title.png">
+      </div>
+    </div>
+    <div class="row">
+      <div class ="col-md-5 col-md-offset-3 gamecontent z-depth-3 panel panel-default">
+        <div class="panel-body">
+          <img src="assets/images/hangman0.png" class="hangmanimg" id="hangman0">
+          <img src="assets/images/hangman1.png" class="hangmanimg" id="hangman1">
+          <img src="assets/images/hangman2.png" class="hangmanimg" id="hangman2">
+          <img src="assets/images/hangman3.png" class="hangmanimg" id="hangman3">
+          <img src="assets/images/hangman4.png" class="hangmanimg" id="hangman4">
+          <img src="assets/images/hangman5.png" class="hangmanimg" id="hangman5">
+          <img src="assets/images/hangman6.png" class="hangmanimg" id="hangman6">  
+          <img src="assets/images/hangman7.png" class="hangmanimg" id="hangman7">                                                    
+        </div>
+        <div class="panel-footer">
+          <p id="animeanswer"></p>
+        </div>
+        <p id="lives"></p>
+        <p>List of Guesses: <div id="guesses"></div></p>
+      </div>
+    </div>
+  </div>
 </body>
 
 <script type="text/javascript" src="assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/js/javascript.js"></script>
+<script type="text/javascript" src="assets/js/mdb.min.js"></script>
 
 </html>

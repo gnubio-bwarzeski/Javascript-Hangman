@@ -3,7 +3,7 @@ var wordlist = ["umineko", "dragonball z", "one punch man", "digimon", "madoka",
 var wordarr = splitter(wordlist[Math.floor(Math.random()*wordlist.length)]);
 var tovictory = wordarr.length;  
 var answerarr = create_dash_arr(wordarr, wordarr.length)
-var lives = 9;
+var wrong = 0;
 var gameactive = false;
 var guessarr =[" "];
 
@@ -13,8 +13,8 @@ var guessarr =[" "];
 // Function begins listening for a key when document initializes, then activates when a key is pressed
 $(document).ready(function(){
   gameactive = true;
-  document.getElementById("lives").innerHTML = lives;
   printscreen(answerarr);
+  document.getElementById("lives").innerHTML = "Good luck!";   
   gameplay();
 
 })
@@ -60,7 +60,6 @@ function answercheck(key){
 
 }
 
-//prints answer array after it is rebuilt
 function printscreen(x){
 
   for (var i = 0; i < wordarr.length; i++){
@@ -77,14 +76,14 @@ function gameplay(){
     console.log(tovictory);
     if (gameactive === true) {
     
-      if (lives > 0 && tovictory > 0) {
+      if (wrong < 7 && tovictory > 0) {
         var a = event.which;
         if (jQuery.inArray(String.fromCharCode(a), guessarr) === -1){
 
           newletter(a);
         } 
 
-        if (lives === 0 || tovictory === 0){
+        if (wrong === 7 || tovictory === 0){
 
           gameactive = false;
           endgame();
@@ -97,10 +96,12 @@ function gameplay(){
       wordarr = splitter(wordlist[Math.floor(Math.random()*wordlist.length)]);
       tovictory = wordarr.length;  
       answerarr = create_dash_arr(wordarr, wordarr.length)
-      lives = 9;
+      wrong = 7;
+      imgchange();
+      wrong = 0;
       guessarr =[" "];
       document.getElementById("guesses").innerHTML = guessarr.toString();
-      document.getElementById("lives").innerHTML = lives;      
+      document.getElementById("lives").innerHTML = "Good luck!";      
       document.getElementById("animeanswer").innerHTML = ""; 
       printscreen(answerarr); 
       gameactive = true;
@@ -119,8 +120,7 @@ function newletter(a){
     tovictory = (tovictory - results)
   }
   else{
-    lives--;
-    document.getElementById("lives").innerHTML = lives;
+    imgchange();
   }
 
   guessarr.push(String.fromCharCode(a));
@@ -132,7 +132,7 @@ function newletter(a){
 
 function endgame(){
 
-  if (lives === 0){
+  if (wrong === 7){
     document.getElementById("lives").innerHTML = "YOU LOSE. PLAY AGAIN?";
     document.getElementById("animeanswer").innerHTML = "";
     printscreen(wordarr);
@@ -144,3 +144,47 @@ function endgame(){
   }
 }
 
+function imgchange(){
+  switch(wrong){
+  case 0:
+  $("#hangman0").hide();
+  $("#hangman1").show();
+  wrong++;
+  break;
+  case 1:
+  $("#hangman1").hide();
+  $("#hangman2").show();
+  wrong++;
+  break;
+  case 2:
+  $("#hangman2").hide();
+  $("#hangman3").show();
+  wrong++;
+  break;
+  case 3:
+  $("#hangman3").hide();
+  $("#hangman4").show();
+  wrong++;
+  break;    
+  case 4:
+  $("#hangman4").hide();
+  $("#hangman5").show();
+  wrong++;
+  break;   
+  case 5:
+  $("#hangman5").hide();
+  $("#hangman6").show();
+  wrong++;
+  break;    
+  case 6:
+  $("#hangman6").hide();
+  $("#hangman7").show();
+  wrong++;
+  break;    
+  case 7:
+  $(".hangmanimg").hide();
+  $("#hangman0").show();
+  wrong++;
+  break;    
+  }    
+}
